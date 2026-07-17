@@ -4,9 +4,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "fetch-pexels": "node scripts/fetch-pexels.js",
-    "fetch": "node scripts/fetch-pexels.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@types/dotenv": "^6.1.1",

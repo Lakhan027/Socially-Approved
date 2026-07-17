@@ -8,7 +8,18 @@ import { notFound, errorHandler } from './middleware/errorHandler';
 const app = express();
 const PORT = env.PORT;
 
-app.use(cors({ origin: env.CLIENT_ORIGIN }));
+const allowedOrigins = env.CLIENT_ORIGIN.split(",").map((o) => o.trim()).filter(Boolean);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    },
+  })
+);
 app.use(express.json());
 app.use(securityHeaders);
 
