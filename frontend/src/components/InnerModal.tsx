@@ -3,6 +3,7 @@
 import { useEffect, useCallback, useRef, useState } from "react";
 import { Video } from "@/types";
 import VideoPlayer from "./VideoPlayer";
+import SocialActions from "./SocialActions";
 
 interface InnerModalProps {
   videos: Video[];
@@ -156,12 +157,12 @@ export default function InnerModal({
                   className="absolute right-2 bottom-16 z-10 flex flex-col items-center gap-0.5 text-white/80 hover:text-white transition-colors group"
                   aria-label="Open on Pexels"
                 >
-                  <div className="p-1.5 rounded-full bg-black/30 backdrop-blur-sm">
+                  {/* <div className="p-1.5 rounded-full bg-black/30 backdrop-blur-sm">
                     <svg className="w-6 h-6 drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
                   </div>
-                  <span className="text-[10px] font-semibold tabular-nums drop-shadow-lg">Pexels</span>
+                  <span className="text-[10px] font-semibold tabular-nums drop-shadow-lg">Pexels</span> */}
                 </a>
               )}
             </div>
@@ -180,24 +181,19 @@ export default function InnerModal({
                     rel="noopener noreferrer"
                     className="text-zinc-500 text-xs hover:text-zinc-300 underline underline-offset-2 transition-colors"
                   >
-                    View on Pexels
+                    {/* View on Pexels */}
                   </a>
                 </>
               )}
             </div>
             <div className="flex items-center gap-4 mt-2 text-[11px] text-zinc-400">
-              <span className="flex items-center gap-1">
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                {formatCount(currentVideo.likes)} likes
-              </span>
-              <span className="flex items-center gap-1">
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                </svg>
-                {formatCount(currentVideo.shares)} shares
-              </span>
+              <SocialActions
+                key={currentVideo.id}
+                videoId={currentVideo.id}
+                initialLikes={currentVideo.likes}
+                initialShares={currentVideo.shares}
+                variant="modal"
+              />
               <span className="flex items-center gap-1">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

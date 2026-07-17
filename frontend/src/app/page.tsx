@@ -22,7 +22,7 @@ export default function Home() {
       setSearching(true);
       setError(null);
       try {
-        const result = await fetchPexelsVideos(query, page, 15);
+        const result = await fetchPexelsVideos(query, page, 40);
         const mapped = result.videos.map(pexelsToVideo);
         setVideos((prev) =>
           append
